@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 import util.StreamUtil;
 
 public class Vec2Int {
@@ -23,5 +25,30 @@ public class Vec2Int {
     public void writeTo(java.io.OutputStream stream) throws java.io.IOException {
         StreamUtil.writeInt(stream, x);
         StreamUtil.writeInt(stream, y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Vec2Int vec2Int = (Vec2Int) o;
+        return x == vec2Int.x && y == vec2Int.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return "Vec2Int{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
